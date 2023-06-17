@@ -32,11 +32,13 @@ normalQueue.Agents.Add(agent3);
 var call1 = new Call { Time = DateTime.Now, Accepted = true, Agent = agent1 };
 var call2 = new Call { Time = DateTime.Now.AddMinutes(-10), Accepted = true, Agent = agent2 };
 var call3 = new Call { Time = DateTime.Now.AddMinutes(-5), Accepted = false };
+var call4 = new Call { Time = DateTime.Now.AddMinutes(-15), Accepted = false };
 
 // Adding calls to queues
 highPriorityQueue.WaitingCalls.Add(call1);
 normalQueue.WaitingCalls.Add(call2);
 normalQueue.WaitingCalls.Add(call3);
+normalQueue.WaitingCalls.Add(call4);
 
 // Creating call center
 CallCentre callCentre = new CallCentre();
@@ -56,6 +58,7 @@ DateTime date1 = DateTime.Now;
 DateTime date2 = normalQueue.GetLongestWaitingCall().Time;
 TimeSpan difference = date1 - date2;
 Console.WriteLine(difference.Minutes + " Minutes");
+Console.WriteLine("Most waiting calls on "+callCentre.GetQueueWithMostCalls().Name);
 
         
      

@@ -42,5 +42,8 @@ class CallCentre
     public List<Employee> Employees { get; set; }
     public List<Queue> Queues { get; set; }
 
-   
+    public Queue GetQueueWithMostCalls()
+    {
+        return Queues.OrderByDescending(q => q.WaitingCalls.Count).FirstOrDefault();
+    }
 }
