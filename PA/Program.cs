@@ -25,8 +25,15 @@ class Queue
 
     public Call GetLongestWaitingCall()
     {
-
-        return WaitingCalls.OrderBy(call => call.Time).FirstOrDefault();
+       var Waiting = new List<Call>();
+       foreach (Call waiting in WaitingCalls)
+        {
+            if (!waiting.Accepted)
+            {
+              Waiting.Add(waiting);
+            }
+        }
+            return Waiting.OrderBy(call => call.Time).FirstOrDefault();
     }
 }
 

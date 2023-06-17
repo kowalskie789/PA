@@ -19,9 +19,11 @@ highPriorityQueue.WaitingCalls = new List<Call>();
 highPriorityQueue.Agents.Add(agent1);
 
 Queue normalQueue = new Queue();
+
 normalQueue.Name = "Normal Priority";
 normalQueue.Agents = new List<Agent>();
 normalQueue.WaitingCalls = new List<Call>();
+
 normalQueue.Agents.Add(agent1);
 normalQueue.Agents.Add(agent2);
 normalQueue.Agents.Add(agent3);
@@ -40,15 +42,16 @@ normalQueue.WaitingCalls.Add(call3);
 CallCentre callCentre = new CallCentre();
 callCentre.Employees = new List<Employee>();
 callCentre.Queues = new List<Queue>();
+
 callCentre.Employees.Add(agent1);
 callCentre.Employees.Add(agent2);
 callCentre.Employees.Add(agent3);
 callCentre.Employees.Add(manager1);
+
 callCentre.Queues.Add(highPriorityQueue);
 callCentre.Queues.Add(normalQueue);
 
 Console.WriteLine("Longest waiting call:");
-
 DateTime date1 = DateTime.Now;
 DateTime date2 = normalQueue.GetLongestWaitingCall().Time;
 TimeSpan difference = date1 - date2;
